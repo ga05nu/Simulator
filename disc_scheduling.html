@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./disc_scheduling/css/disc_scheduling.css">
+</head>
+
+<body>
+    <div class="mainTitle">Disc Scheduling</div>
+    <div class="chart-container">
+        <div id="chart"></div>
+        <div class="form_group">
+            <div class="field">
+                <label for="head_input">Head Position</label>
+                <input type="number" id="head_input" placeholder="0" onkeydown="initHead(event)" />
+            </div>
+            
+            <div class="field">
+                <label for="string_input">Sequence String</label>
+                <input type="text" id="string_input" placeholder="Enter request sequence" onkeydown="updateMarkers(event)" />
+            </div>
+            
+            <div class="field">
+                <label for="max_input">Maximum Position</label>
+                <input type="number" id="max_input" placeholder="200" onkeydown="changeMaximum(event)" />
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">Algorithm</button>
+                <div class="dropdown-content" id="dd">
+                  <button class ="option" onclick="setAlgorithm(event)">FCFS</button>
+                  <button class ="option" onclick="setAlgorithm(event)">SCAN</button>
+                  <button class ="option" onclick="setAlgorithm(event)">C-SCAN</button>
+                </div>
+            </div>
+
+            <div class="field">
+                <div id="total_seek">Total Seek =</div>
+            </div>
+            
+            <button id="go_button" onclick="beginAnimation()">Go</button>
+        </div>
+        <div id="head">&nbsp</div>
+    </div>
+
+    <script src="./disc_scheduling/js/disc_scheduling.js"></script>
+</body>
+
+</html>
