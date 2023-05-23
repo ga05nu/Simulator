@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./disc_scheduling/css/disc_scheduling.css">
+    <link rel="stylesheet" href="./deadlock_detetction/css/deadlock_detection.css">
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">Deadlock Detection</h1>
+        <hr class = "my-4">
+        <p class="lead">
+            A deadlock occurs when two or more processes are blocked, waiting for each other to release the resources they need. In order to get rid of deadlocks, the OS periodically checks the system for any deadlock using various techniques, one of them being using Resource Allocation Graph (RAG) and Wait For Graph (WFG).</p>
+    </div>
+    <div class="form_group">
+        <div class="field">
+            <label for="cprocess">&nbsp</label>
+            <button id = "cprocess" class="btn btn-primary" onclick="createProcess()">Create New Process</button>
+        </div>
+
+        <div class="row-container">
+            <div class="field">
+                <label for="num_res">Number of Resource(s)</label>
+                <input type="number" id="num_res" placeholder="1"/>
+            </div>
+    
+            <div class="field">
+                <label for="cres">&nbsp</label>
+                <button id ="cres" class="btn btn-primary" onclick="createResource()">Create New Resource</button>
+            </div>
+        </div>
+    </div>
+    <hr class = "my-4">
+    <div class="dead-lock-container">
+        <div class="processes">
+        </div>
+        <div class="resources">
+        </div>
+    </div>
+    <script src="./deadlock_detetction/js/deadlock_detection.js"></script>
+</body>
+
+</html>
