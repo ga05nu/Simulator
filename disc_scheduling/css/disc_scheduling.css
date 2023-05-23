@@ -33,7 +33,7 @@ body:before{
 }
 
 #chart {
-    margin-top: 10%;
+    margin-top: 2.5%;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
@@ -59,7 +59,7 @@ body:before{
 
 #max_input {
     position: relative;
-    top: -45px;
+    top: 0px;
     width: 100%;
     left: 0px;
 }
@@ -67,13 +67,13 @@ body:before{
 #string_input {
     position: relative;
     width: 120%;
-    top: -45px;
+    top: 0px;
     left: 0px;
 }
  
 #head_input {
     position: relative;
-    top: -45px;
+    top: 0px;
     width: 100%;
     left: 0px;
 }
@@ -81,7 +81,6 @@ body:before{
 #total_seek {
     position: relative;
     color: white;
-    top: -10px;
     width: 100%;
     left: 0px;
     border-width: 2px;
@@ -91,7 +90,6 @@ body:before{
     position: relative;
     padding-left: 10%;
     padding-right: 10%;
-    top: -45px;
     display: flex;
     justify-content: space-between
 }
@@ -105,7 +103,7 @@ body:before{
 .field>label {
     color: #fff;
     position: relative;
-    top: -45px;
+    top: 0px;
     left: 0%;
 }
 
@@ -117,7 +115,6 @@ body:before{
     position: relative;
     background-color: white;
     color: black;
-    top: -15px;
     width: 150%;
     padding: 5px;
     font-size: 14px;
@@ -162,9 +159,6 @@ body:before{
 #go_button {
     cursor: pointer;
     position: relative;
-    top: -15px;
-    width: 7%;
-    height: 20%;
 }
 
 #head {
