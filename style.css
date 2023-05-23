@@ -1,13 +1,20 @@
-
+*
+{
+    color:white;
+}
+input
+{
+    color: black;
+}
 
 fresh th {
-    background: linear-gradient(WhiteSmoke, lightgray);
+    background-color:rgb(34, 29, 40); 
     text-align: left;
-    border: 1px solid black;
+    border: 1px solid grey;
     height: 400 px;
 }
 fresh td {
-    border: 1px solid black;
+    border: 1px solid grey;
     border-bottom: 0;
     /*border-right: 0;*/
     height: 20px;
@@ -15,7 +22,7 @@ fresh td {
 }
 
 div th, div td {
-    border: 1px solid black;
+    border: 1px solid grey;
     text-align: center;
 }
 table {
@@ -26,10 +33,9 @@ input {
     text-align: center;
 }
 #curtain {
-  background-color: white;
+    background-color:rgb(34, 29, 40); 
 }
-*{    background-color: #fff;
-}
+
 
 h2{
 font-size: 20px;
@@ -57,7 +63,7 @@ text-align: center
 }
 
 .about{
-color: #7c7a7b;
+color: grey;
 font-size: 35px;
 }
 
