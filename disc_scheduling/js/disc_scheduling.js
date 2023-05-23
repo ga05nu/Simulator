@@ -160,8 +160,10 @@ function getInputArray() {
             var finalArray = new Array();
             finalArray.push(headPos);
             finalArray.push(...rArray);
-            finalArray.push(maxPos);
-            finalArray.push(...lArray);
+            if(lArray.length != 0) {
+                finalArray.push(maxPos);
+                finalArray.push(...lArray);
+            }
             seqArray = finalArray;
             break;
         }
@@ -186,9 +188,11 @@ function getInputArray() {
             var finalArray = new Array();
             finalArray.push(headPos);
             finalArray.push(...rArray);
-            finalArray.push(maxPos);
-            finalArray.push(0);
-            finalArray.push(...lArray);
+            if(lArray.length != 0) {
+                finalArray.push(maxPos);
+                finalArray.push(0);
+                finalArray.push(...lArray);
+            }
             seqArray = finalArray;
             break;
         }
