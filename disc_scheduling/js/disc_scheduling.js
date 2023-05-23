@@ -196,6 +196,39 @@ function getInputArray() {
             seqArray = finalArray;
             break;
         }
+        case "SSTF":
+        {
+            const headPos = Number(document.getElementById("head_input").value || 0);
+            const maxPos = Number(document.getElementById("max_input").value || 200);
+            var seeked = new Array(seqArray.length).fill(0);
+            var finalArray = new Array();
+
+            var getClosestSeek = function (head) {
+                var min = -1;
+                var ind;
+                seqArray.forEach((value, index) => {
+                    if(min < 0 && seeked[index] == 0) {
+                        min = Math.abs(value - head);
+                        ind = index;
+                    }
+                    else if(seeked[index] == 0 && Math.abs(value - head) < min) {
+                        min = Math.abs(value - head);
+                        ind = index;
+                    }
+                });
+                seeked[ind] = 1;
+                return seqArray[ind];
+            }
+
+            finalArray.push(headPos);
+            var head = headPos;
+            for(i = 0; i < seqArray.length; i++) {
+                finalArray.push(getClosestSeek(head));
+                head = finalArray[i + 1];
+            }
+            seqArray = finalArray;
+            break;
+        }
     }
 
     return seqArray;
