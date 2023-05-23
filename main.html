@@ -88,12 +88,7 @@
     </p>
     <input type="button" value="Go" onclick="draw()" />
     <br /><br /><br>  
-    <fresh>
-
-    </fresh>
-    <p class="zaz">
-      Total Completion Time: <strong id="timer"></strong> seconds 
-    </p>
+   
 
   </div>
     
@@ -123,21 +118,27 @@
 
 <body style="background-color:rgb(34, 29, 40); ">
 
+  <div class="jumbotron">
+    <h1 class="display-4">Process Scheduling Algorithms</h1>
+    <hr class = "my-4">
+    <p class="lead">
+      The process of deciding which task will utilize the cpu time is called task scheduling. We have the following algorithms for task scheduling.<br>Choose any of the following<br>
+    <p class = "my-4">
+      <form id="algorithm">
+        <input type="radio" name="algorithm" value="fcfs" checked class="heading"> FCFS (First Come First Serve)<br>
+        <input type="radio" name="algorithm" value="sjf" class="heading"> SJF (Shortest Job First)<br>
+        <input type="radio" name="algorithm" value="robin" class="heading"> Round Robin Scheduling<br>
+        <input type="radio" name="algorithm" value="priority" class="heading"> Priority based scheduling(Higher number, higher priority)<br>
+        
+      </form>
+      <br>
+       
+    </p>
+</div>
+
   <div class="container" style="background-color:rgb(34, 29, 40); ">
-    <div>
+  <br><br>
       
-      <div>
-        <h4 style="color:grey;"> <b> CPU SCHEDULING ALGORITHMS</b> <br> </h4>
-        <h2 style="color:grey;"><u>Chose from the following</u></h2>
-        <form id="algorithm">
-          <input type="radio" name="algorithm" value="fcfs" checked /> FCFS (First Come First Serve)<br>
-          <input type="radio" name="algorithm" value="sjf" /> SJF (Shortest Job First)<br>
-          <input type="radio" name="algorithm" value="robin" /> Round Robin Scheduling<br>
-          <input type="radio" name="algorithm" value="priority" /> Priority based scheduling(Higher number, higher priority)<br>
-          
-        </form>
-        <br>
-      </div>
       <table id="inputTable">
         <tr>
           <th>Process</th>
@@ -150,7 +151,7 @@
           <td>P0</td>
           <td>0</td>
           <td><input class="initial exectime" type="text" value="5" /></td>
-          <td class="servtime"></td>
+          <td class="servtime"></td>  
           <td class="priority-only initial"><input type="text" /></td>
         </tr>
         <tr>
@@ -161,22 +162,23 @@
           <td class="priority-only"><input type="text" /></td>
         </tr>
       </table>
-      <input id="minus" style="display: inline; left: 428px; position: absolute; top: 170px;" type="button" value="-"
-        onclick="deleteRow();" />
+      
     </div>
-    <input type="button" value="+" onclick="addRow();" style="display: inline; left: 428px; position: absolute; top: 170px;"/>
-    <div>
-    </div>
-    <p id="quantumParagraph" hidden>Quantum:
+    <p id="quantumParagraph" >Time Quantum:
       <input style="width: 50px;" id="quantum" type="text" value="3" />
     </p>
     <input type="button" value="Go" onclick="draw();" />
     <br /><br />
-
+    <div class="controller">
+      <input id="minus"  type="button" value="-" onclick="deleteRow();">
+       
+        <input type="button" value="+" onclick="addRow();">
+      
+    </div><br><br>
     <fresh>
-    </fresh>
+    </fresh><br><br>
     <p class="zaz">
-      <u> Total Completion Time: <strong id="timer"></strong> seconds </u>
+      Total Completion Time: <strong id="timer"></strong> seconds 
     </p>
   </div>
 </body>

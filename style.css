@@ -1,13 +1,68 @@
+body
+{
+    accent-color: rgb(54, 49, 60);
+}
+.controller
+{
+    
+    align-items: flex-end;
+    flex-direction: row;
+}
+button
+{
+    position: fixed;
 
+}
+input[type=button]:hover
+{
+    background-color: white;
+    color:black;
+}
+input[type=button]
+{
+    background-color:rgb(54, 49, 60);
+    color: white;
+}
+
+
+.jumbotron {
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 5%;
+    background-color: rgb(54, 49, 60);
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
+.display-4 {
+    color: white;
+    text-align: center;
+}
+
+.my-4 {
+    border-color: white;
+}
+
+.lead {
+    color: white;
+}
+*
+{
+    color:white;
+}
+input
+{
+    color: black;
+}
 
 fresh th {
-    background: linear-gradient(WhiteSmoke, lightgray);
+    background-color:rgb(34, 29, 40); 
     text-align: left;
-    border: 1px solid black;
+    border: 1px solid grey;
     height: 400 px;
+    
 }
 fresh td {
-    border: 1px solid black;
+    border: 1px solid grey;
     border-bottom: 0;
     /*border-right: 0;*/
     height: 20px;
@@ -15,7 +70,7 @@ fresh td {
 }
 
 div th, div td {
-    border: 1px solid black;
+    border: 1px solid grey;
     text-align: center;
 }
 table {
@@ -26,10 +81,9 @@ input {
     text-align: center;
 }
 #curtain {
-  background-color: white;
+    background-color:rgb(34, 29, 40); 
 }
-*{    background-color: #fff;
-}
+
 
 h2{
 font-size: 20px;
@@ -50,19 +104,19 @@ font-size: 25px;
 width: 1100px;
 margin-left: auto;
 margin-right: auto;
-font-family: cursive;
+
 font-size: 17px;
 text-align: center
 
 }
 
 .about{
-color: #7c7a7b;
+color: grey;
 font-size: 35px;
 }
 
 .zaz{ color:    #933648;
-    color: grey;
+    color: white;
 font-size: 30px;
 
 }
