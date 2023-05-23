@@ -362,6 +362,7 @@
 //   }
 //   animate();
 // }
+// 
 recalculateServiceTime();
 $('.priority-only').hide();
 
@@ -393,9 +394,11 @@ $(document).ready(function () {
 
 function addRow() {
   var lastRow = $('#inputTable tr:last');
-  var lastRowNumebr = parseInt(lastRow.children()[0].innerText);
+  var lastRowNumebr = parseInt(lastRow.children()[1].innerText);
 
-  var newRow = '<tr><td>'
+  var newRow = '<tr><td>P'
+  + (lastRowNumebr + 1)
+  + '</td><td>'
   + (lastRowNumebr + 1)
   + '</td><td><input class="exectime" type="text"/></td><td class="servtime"></td>'
   //if ($('input[name=algorithm]:checked', '#algorithm').val() == "priority")
@@ -439,9 +442,9 @@ function recalculateServiceTime() {
   if (algorithm == "fcfs") {
     $.each(inputTable, function (key, value) {
       if (key == 0) return true;
-      $(value.children[2]).text(totalExectuteTime);
+      $(value.children[3]).text(totalExectuteTime);
 
-      var executeTime = parseInt($(value.children[1]).children().first().val());
+      var executeTime = parseInt($(value.children[2]).children().first().val());
       totalExectuteTime += executeTime;
     });
   }
@@ -449,7 +452,7 @@ function recalculateServiceTime() {
     var exectuteTimes = [];
     $.each(inputTable, function (key, value) {
       if (key == 0) return true;
-      exectuteTimes[key - 1] = parseInt($(value.children[1]).children().first().val());
+      exectuteTimes[key - 1] = parseInt($(value.children[2]).children().first().val());
     });
 
     var currentIndex = -1;
@@ -458,7 +461,7 @@ function recalculateServiceTime() {
 
       if (currentIndex == -1) return;
 
-      $(inputTable[currentIndex + 1].children[2]).text(totalExectuteTime);
+      $(inputTable[currentIndex + 1].children[3]).text(totalExectuteTime);
 
       totalExectuteTime += exectuteTimes[currentIndex];
     }
@@ -469,8 +472,8 @@ function recalculateServiceTime() {
 
     $.each(inputTable, function (key, value) {
       if (key == 0) return true;
-      exectuteTimes[key - 1] = parseInt($(value.children[1]).children().first().val());
-      priorities[key - 1] = parseInt($(value.children[3]).children().first().val());
+      exectuteTimes[key - 1] = parseInt($(value.children[2]).children().first().val());
+      priorities[key - 1] = parseInt($(value.children[4]).children().first().val());
     });
 
     var currentIndex = -1;
@@ -479,7 +482,7 @@ function recalculateServiceTime() {
 
       if (currentIndex == -1) return;
 
-      $(inputTable[currentIndex + 1].children[2]).text(totalExectuteTime);
+      $(inputTable[currentIndex + 1].children[3]).text(totalExectuteTime);
 
       totalExectuteTime += exectuteTimes[currentIndex];
     }
@@ -488,7 +491,7 @@ function recalculateServiceTime() {
     $('#minus').css('left', '335px');
     $.each(inputTable, function (key, value) {
       if (key == 0) return true;
-      $(value.children[2]).text("");
+      $(value.children[3]).text("");
     });
   }
 }
@@ -622,7 +625,7 @@ function draw() {
   if (algorithm == "fcfs") {
     $.each(inputTable, function (key, value) {
       if (key == 0) return true;
-      var executeTime = parseInt($(value.children[1]).children().first().val());
+      var executeTime = parseInt($(value.children[2]).children().first().val());
       th += '<th style="height: 60px; width: ' + executeTime * 20 + 'px;">P' + (key - 1) + '</th>';
       td += '<td>' + executeTime + '</td>';
     });
@@ -639,7 +642,7 @@ function draw() {
 
     $.each(inputTable, function (key, value) {
       if (key == 0) return true;
-      var executeTime = parseInt($(value.children[1]).children().first().val());
+      var executeTime = parseInt($(value.children[2]).children().first().val());
       executeTimes[key - 1] = { "executeTime": executeTime, "P": key - 1 };
     });
 
@@ -666,8 +669,8 @@ function draw() {
 
     $.each(inputTable, function (key, value) {
       if (key == 0) return true;
-      var executeTime = parseInt($(value.children[1]).children().first().val());
-      var priority = parseInt($(value.children[3]).children().first().val());
+      var executeTime = parseInt($(value.children[2]).children().first().val());
+      var priority = parseInt($(value.children[4]).children().first().val());
       executeTimes[key - 1] = { "executeTime": executeTime, "P": key - 1, "priority": priority };
     });
 
