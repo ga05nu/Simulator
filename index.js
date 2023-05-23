@@ -1,4 +1,4 @@
-// recalculateServiceTime();
+
 // $('.priority-only').hide();
 
 // $(document).ready(function () {
