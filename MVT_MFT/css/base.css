@@ -23,15 +23,32 @@ body{
 
 .header{
     animation: slideInTop 2s ease-in;
+}
 
+ul{ 
+    list-style-type: none;
+
+    border: none;
+    background-color: #242526;
+
+    font-family: 'poppins';
+    font-size: 20px;
+    
+    padding-left: 25px;
+    padding-top: 20px;
+    margin: 0;
+}
+
+.header1{
     background-color: #242526;
     
     
     font-size: 150px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: #fff;
+    text-decoration: none;
     text-align: center;
-    padding-top: 12vh;
+    padding-top: 8vh;
     padding-bottom: 12vh; 
 }
 h1{
