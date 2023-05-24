@@ -1,0 +1,42 @@
+@keyframes slideInTop{
+    from {
+        transform: translateY(-400px);
+    }
+    
+    to {
+        transform: translateY(0);
+    }
+}
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-900px);
+    }
+    
+    to {
+        transform: translateX(0);
+    }
+}
+
+body{
+    margin: 0;
+}
+
+.header{
+    animation: slideInTop 2s ease-in;
+
+    background-color: #242526;
+    
+    
+    font-size: 150px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #fff;
+    text-align: center;
+    padding-top: 12vh;
+    padding-bottom: 12vh; 
+}
+h1{
+    font-size: 50px;
+    animation: slideInLeft 2s ease-in;
+    text-align: center;
+
+}
