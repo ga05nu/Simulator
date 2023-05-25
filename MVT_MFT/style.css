@@ -28,7 +28,7 @@ body{
 }
 .button{
     padding: 0;
-    width: 49.97vw;
+    width: 50vw;
     height: 100vh;
     background-color: #121212;
     border: none;
@@ -50,6 +50,8 @@ body{
     animation-name: slideInLeft;
     animation-duration: 2s;
     animation-timing-function: ease-in;
+
+    border-right: 1px solid white;
 }
 .button-2{
     animation-name: slideInRight;

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/MVT_MFT/css/base.css">
+    <link rel="stylesheet" href="mvt.css">
+    <title>MVT</title>
+</head>
+
+<body>
+    <div class="header">
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+            </ul>
+        </nav>
+        <header class="header1">MVT</header>
+    </div>
+    <div class="container">
+        <form id="memoryAllocationForm">
+            <label for="totalMemorySize">Enter total memory size:</label>
+            <input type="number" id="totalMemorySize" required>
+            <br>
+            <label for="blockSize">Enter block size:</label>
+            <input type="number" id="blockSize" required>
+            <br>
+            <label for="numProcesses">Enter number of processes:</label>
+            <input type="number" id="numProcesses" required>
+            <br>
+            <div id="memoryRequirements">
+            </div>
+            <br>
+            <button type="submit">Allocate Memory</button>
+        </form>
+        <div id="memoryBlocks"></div>
+        <div id="output"></div>
+    </div>
+    <script src="mvt.js"></script>
+</body>
+
+</html>
