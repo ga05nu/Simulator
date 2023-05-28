@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Allocation Simulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            padding: 20px;
+        }
+        select, button {
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>File Allocation Simulation</h1>
+    <div class="container">
+        <select id="allocationMethod">
+            <option value="sequential">Sequential</option>
+            <option value="linked">Linked</option>
+            <option value="indexed">Indexed</option>
+        </select>
+        <button onclick="allocateFile()">Allocate File</button>
+        <table id="fileTable">
+            <tr>
+                <th>File</th>
+                <th>Allocation Method</th>
+                <th>Blocks</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        let fileCounter = 1;
+        const totalBlocks = 100;
+        let availableBlocks = Array.from({length: totalBlocks}, (_, i) => i + 1);
+
+        function allocateFile() {
+            const allocationMethod = document.getElementById("allocationMethod").value;
+            const fileSize = Math.floor(Math.random() * 10) + 1;
+            let blocks;
+
+            switch (allocationMethod) {
+                case "sequential":
+                    blocks = allocateSequentialBlocks(fileSize);
+                    break;
+                case "linked":
+                    blocks = allocateLinkedBlocks(fileSize);
+                    break;
+                case "indexed":
+                    const indexBlock = allocateIndexBlock();
+                    const dataBlocks = allocateDataBlocks(fileSize);
+                    if (indexBlock && dataBlocks.length === fileSize) {
+                        blocks = {indexBlock, dataBlocks};
+                    } else {
+                        blocks = null;
+                    }
+                    break;
+            }
+
+            if (blocks) {
+                displayFileAllocation(fileCounter, allocationMethod, blocks);
+                fileCounter++;
+            } else {
+                alert("Not enough space to allocate the file.");
+            }
+        }
+
+        function allocateSequentialBlocks(fileSize) {
+            if (availableBlocks.length < fileSize) return null;
+            const startBlock = availableBlocks[0];
+            availableBlocks.splice(0, fileSize);
+            return {start: startBlock, end: startBlock + fileSize - 1};
+        }
+
+        function allocateLinkedBlocks(fileSize) {
+            const blocks = [];
+            for (let i = 0; i < fileSize; i++) {
+                if (availableBlocks.length === 0) break;
+                const index = Math.floor(Math.random() * availableBlocks.length);
+                blocks.push(availableBlocks.splice(index, 1)[0]);
+            }
+            return blocks.length === fileSize ? blocks : null;
+        }
+
+        function allocateIndexBlock() {
+            if (availableBlocks.length === 0) return null;
+            const index = Math.floor(Math.random() * availableBlocks.length);
+            return availableBlocks.splice(index, 1)[0];
+        }
+
+        function allocateDataBlocks(fileSize) {
+            const dataBlocks = [];
+            for (let i = 0; i < fileSize; i++) {
+                if (availableBlocks.length === 0) break;
+                const index = Math.floor(Math.random() * availableBlocks.length);
+                dataBlocks.push(availableBlocks.splice(index, 1)[0]);
+            }
+            return dataBlocks;
+        }
+
+        function displayFileAllocation(fileNumber, allocationMethod, blocks) {
+            const table = document.getElementById("fileTable");
+            const row = table.insertRow(-1);
+            row.insertCell(0).innerHTML = `File ${fileNumber}`;
+            row.insertCell(1).innerHTML = allocationMethod.charAt(0).toUpperCase() + allocationMethod.slice(1);
+
+            if (allocationMethod === "indexed") {
+                row.insertCell(2).innerHTML = `Index: ${blocks.indexBlock}, Data: ${blocks.dataBlocks.join(", ")}`;
+            } else {
+                row.insertCell(2).innerHTML = Array.isArray(blocks) ? blocks.join(", ") : `${blocks.start} - ${blocks.end}`;
+            }
+        }
+    </script>
+</body>
+</html>
