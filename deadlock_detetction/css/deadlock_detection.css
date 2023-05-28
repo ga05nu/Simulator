@@ -15,7 +15,7 @@ body:before{
 }
 
 .row-container > * {
-    margin: 0px 30px;
+    margin: 0px 20px;
 }
 
 .circle {
@@ -83,6 +83,14 @@ body:before{
     margin: 0px 5px;
 }
 
+.triangle-marker {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid white;
+  }
 
 /* Bootstrap overrides */
 .jumbotron {
