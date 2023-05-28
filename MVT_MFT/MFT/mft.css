@@ -1,25 +1,25 @@
-@keyframes slideInRight {
+@keyframes slideInRight{
     from {
-      transform: translateX(1000px);
+        transform: translateX(1000px);
     }
     
     to {
-      transform: translateX(0);
+        transform: translateX(0);
     }
-  }
-  
-  .block {
+} 
+
+.block {
     animation-name: slideInRight;
     animation-duration: 1s;
     animation-timing-function: ease-in;
-  
+
     display: inline-block;
     border: 1px solid black;
     text-align: center;
     padding: 5px;
     margin: 30px 0 30px 0;
     width: 50px;
-    position: relative;
+    position: relative; 
   }
   
   .block.empty {
@@ -28,6 +28,8 @@
   
   .block.process {
     background-color: lightgreen;
+    /* width: var(--allocated-percentage, 0%); */
+  
   }
   
   .block-content {
@@ -46,4 +48,5 @@
     font-size: 14px;
     font-weight: bold;
   }
+
   

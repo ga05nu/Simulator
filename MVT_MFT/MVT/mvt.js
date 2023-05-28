@@ -1,56 +1,81 @@
-// Process class representing a task or process
-class Process {
-    constructor(name) {
-      this.name = name;
-      this.state = 'ready'; // Possible states: ready, running, terminated
+document.addEventListener("DOMContentLoaded", function () {
+  var memoryRequirementsContainer = document.getElementById("memoryRequirements");
+  var memoryAllocationForm = document.getElementById("memoryAllocationForm");
+  var memoryBlocksDiv = document.getElementById("memoryBlocks");
+  var outputDiv = document.getElementById("output");
+
+  memoryAllocationForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    var ms = parseInt(document.getElementById("totalMemorySize").value);
+    var np = parseInt(document.getElementById("numProcesses").value);
+    var memoryRequirements = [];
+
+    // Retrieve memory requirements for each process
+    for (var i = 0; i < np; i++) {
+      var memoryInput = document.getElementById("memoryInput_" + i);
+      memoryRequirements.push(parseInt(memoryInput.value));
     }
-    
-    run() {
-      console.log(`Process ${this.name} is running.`);
-      this.state = 'running';
-      // Simulating the execution time of the process
-      setTimeout(() => {
-        this.terminate();
-      }, Math.random() * 5000); // Random execution time between 0 to 5000 milliseconds
-    }
-    
-    terminate() {
-      console.log(`Process ${this.name} has terminated.`);
-      this.state = 'terminated';
-    }
-  }
-  
-  // Multiprogramming with a Variable Number of Tasks (MPVT) class
-  class MPVT {
-    constructor() {
-      this.processes = []; // Array to store the processes
-    }
-    
-    addProcess(process) {
-      this.processes.push(process);
-      console.log(`Process ${process.name} added.`);
-      if (process.state === 'ready') {
-        this.runProcess(process);
+
+    // Perform memory allocation simulation
+    var memoryBlocks = [];
+    var visited = [];
+    var tif = 0;
+
+    // Initialize memory blocks and visited array
+    for (var i = 0; i < np; i++) {
+      memoryBlocks.push(memoryRequirements[i]);
+      visited.push(0);
+      tif += memoryRequirements[i];
+    }``
+
+    // Calculate left memory
+    var leftMemory = ms - tif;
+
+    // Generate visual representation of memory allocation
+    var output = "";
+    var allocationPossible = true; // Flag to track if memory allocation is possible
+
+    // Check if left memory is negative
+    if (leftMemory >= 0) {
+      for (var i = 0; i < np; i++) {
+        output += "<div class='block process'>";
+        output += "P" + i + "<br>" + memoryBlocks[i];
+        output += "</div>";
       }
+
+      // Add left memory block
+      output += "<div class='block empty'>";
+      output += "Left<br>" + leftMemory;
+      output += "</div>";
+
+      output += "<br>TIF: " + tif;
+      output += "<br>TEF: " + leftMemory;
+    } else {
+      allocationPossible = false;
+      output = "<p>Memory Full</p>";
     }
-    
-    runProcess(process) {
-      if (process.state === 'ready') {
-        console.log(`Process ${process.name} is ready to run.`);
-        process.run();
-      }
+
+    memoryBlocksDiv.innerHTML = output;
+
+    // Display allocation result
+    if (allocationPossible) {
+      outputDiv.innerHTML = "<p>Memory allocation successful.</p>";
+    } else {
+      outputDiv.innerHTML = "<p>Memory allocation failed.</p>";
     }
-  }
-  
-  // Usage
-  const os = new MPVT();
-  
-  // Creating and adding processes
-  const process1 = new Process('Process 1');
-  const process2 = new Process('Process 2');
-  const process3 = new Process('Process 3');
-  
-  os.addProcess(process1);
-  os.addProcess(process2);
-  os.addProcess(process3);
-  
+  });
+
+  // Add dynamic input fields for memory requirements based on the number of processes
+  document.getElementById("numProcesses").addEventListener("change", function () {
+    var numProcesses = parseInt(this.value);
+    var inputFields = "";
+
+    for (var i = 0; i < numProcesses; i++) {
+      inputFields += "<label for='memoryInput_" + i + "'>Enter memory requirement for P" + i + ":</label>";
+      inputFields += "<input type='number' id='memoryInput_" + i + "' required><br>";
+    }
+
+    memoryRequirementsContainer.innerHTML = inputFields;
+  });
+});
