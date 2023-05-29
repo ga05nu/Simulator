@@ -35,10 +35,12 @@ body:before {
 
 .block.empty {
   background-color: lightgray;
+  color: black;
 }
 
 .block.process {
   background-color: lightgreen;
+  color: black;
   /* width: var(--allocated-percentage, 0%); */
 
 }
