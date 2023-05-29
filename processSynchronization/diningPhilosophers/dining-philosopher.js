@@ -160,14 +160,7 @@ $(document).ready(function() {
     chair: '',
     status: 'Philosopher #4 is thinking.'
   },
-  // {
-  //   philosophers: [0,2,0,0,0],
-  //   chopsticks: [0,0,0,0,0],
-  //   mutex: 0,
-  //   waiting: 3,
-  //   chair: '',
-  //   status: 'Philosopher #5 y, '
-  // },
+
   {
     philosophers: [0,0,0,0,2],
     chopsticks: [1,0,0,0,1],
@@ -241,22 +234,7 @@ $(document).ready(function() {
     chair: '',
     status: 'Philosopher #5 is thinking.'
   },
-  // {
-  //  philosophers: [0,0,2,1,0],
-  //   chopsticks: [0,0,0,0,0],
-  //   mutex: 0,
-  //   waiting: 4,
-  //   chair: '',
-  //   status: 'Philosopher #3 feels hungry.'
-  // },
-  // {
-  //   philosophers: [0,0,0,2,0],
-  //   chopsticks: [0,0,0,0,0],
-  //   mutex: 0,
-  //   waiting: 4,
-  //   chair: '',
-  //   status: 'Philosopher #4 feels hungry.'
-  // },
+
   {
     philosophers: [0,0,0,2,0],
     chopsticks: [0,0,0,1,1],
