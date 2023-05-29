@@ -35,10 +35,13 @@
   
   .block.empty {
     background-color: lightgray;
+    color: black  ;
   }
   
   .block.process {
     background-color: lightgreen;
+    color: black;
+
   }
   
   .block-content {
