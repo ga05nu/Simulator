@@ -17,7 +17,7 @@
     .container {
       max-width: 800px;
       margin: 50px auto;
-      padding: 20px;
+      /* padding: 20px; */
       text-align: center;
       background-color: #222;
       border-radius: 5px;
@@ -25,8 +25,17 @@
     }
 
     h1 {
+
       color: #fff;
       margin-top: 0;
+      padding: 10px;
+      margin-bottom: 0;
+    }
+
+    .container h3{
+      border-top: 1px solid white;
+      padding:10px
+
     }
 
     .btn {
@@ -56,6 +65,11 @@
 <body>
   <div class="container">
     <h1>Process Synchronization Simulations</h1>
+    <h3>
+      Process synchronization simulations are valuable tools for studying concurrent systems. They help analyze the
+      behavior of processes and the effectiveness of synchronization mechanisms. These simulations aid in identifying
+      issues like deadlocks and race conditions, leading to the development of more reliable and efficient concurrent
+      systems</h3>
     <nav>
       <a class="btn" href="readerWriter/reader_writer.html">Reader-Writer Problem</a>
       <a class="btn" href="diningPhilosophers/dining-philosopher.html">Dining Philosophers Problem</a>
