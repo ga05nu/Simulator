@@ -893,7 +893,5 @@ $(document).ready(function() {
       loadStep(step);
     }
   });
-
-  // Reset visualization after document loads
   resetVisualization();
 });

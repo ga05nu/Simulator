@@ -132,16 +132,7 @@
                   <span id="producer-status" class="label"></span>
                 </span>
               </div>
-              <div class="panel-body code-panel">
-                <pre id="code-barber"><code class="language-c">void *producer() {
-    sem_wait(&amp;empty);
-    sem_wait(&amp;mutex);
-    produce();
-    sem_post(&amp;mutex);
-    sem_post(&amp;fill);
-    cut_hair(); 
-}</code></pre>
-              </div>
+        
             </div>
           </div>
           <div class="col-md-4">
@@ -154,15 +145,7 @@
                 </span>
               </div>
                 
-              <div class="panel-body code-panel">
-                <pre id="code-customer"><code class="language-c">void *consumer() {
-  sem_wait(&amp;fill);
-  sem_wait(&amp;mutex);
-  consume();
-  sem_post(&amp;mutex);
-  sem_post(&amp;empty);
-}</code></pre>
-             </div>
+            
           </div>
         </div>
         <div class="col-md-2"></div>
