@@ -38,7 +38,7 @@ p {
 .btn {
   margin: 5px;
   padding: 10px 20px;
-  background-color: #b214f0;
+  background-image: linear-gradient(to right, rgb(113, 78, 202), rgb(99, 4, 147));
   color: #fcfcfc;
   text-decoration: none;
   border-radius: 4px;
