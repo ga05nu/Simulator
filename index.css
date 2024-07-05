@@ -1,28 +1,28 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #111;
-  color: #fff;
+  background-color: #333;
+  color: #ccc;
 }
 
 .container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 50px auto;
   padding: 20px;
   text-align: center;
-  background-color: #222;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #444;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
   margin-top: 0;
-  color: #fff;
+  color: #ccc;
 }
 
 p {
-  color: #ccc;
+  color: #999;
 }
 
 .btn-container {
@@ -30,23 +30,23 @@ p {
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 20px;
-  background-color: #222;
+  background-color: #444;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .btn {
   margin: 5px;
-  padding: 10px 20px;
-  background-image: linear-gradient(to right, rgb(113, 78, 202), rgb(99, 4, 147));
+  padding: 12px 24px;
+  background-image: linear-gradient(to right, #666, #444);
   color: #fcfcfc;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 6px;
   transition: .3s;
 }
 
 .team-members {
-  font-size: 24px;
+  font-size: 17px;
   text-align: left;
   margin-top: 20px;
 }
@@ -64,8 +64,9 @@ p {
   height: 0;
 }
 
-.btn-container a:hover{
+.btn-container a:hover {
   transform: translateY(-3px);
-  background-image: linear-gradient(to left, rgb(113, 78, 202), rgb(99, 4, 147));;
-  color: whitesmoke;
+  background-image: linear-gradient(to left, #666, #444);
+  color: #eee;
 }
+

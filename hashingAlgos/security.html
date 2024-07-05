@@ -5,88 +5,177 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="security.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif; /* Poppins font */
+            background-color: #f0f0f0; /* Light gray background */
+            color: #333; /* Dark gray text color */
+        }
+
+        .jumbotron {
+            background-color: #555; /* Dark gray background */
+            color: #fff; /* White text color */
+            text-align: center;
+            padding-bottom: 20px; /* Increased padding */
+            padding-top: 30px; /* Increased padding */
+            margin-bottom: 10px; /* Increased margin */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        .display-4 {
+            color: #fff; /* White text color */
+            text-align: center;
+        }
+
+        .my-4 {
+            border-color: #fff; /* White border color */
+        }
+
+        .lead {
+            color: #fff; /* White text color */
+        }
+
+        .info-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two boxes in each row */
+            gap: 20px; /* Gap between grid items */
+        }
+
+        .info-box {
+            background-color: #424242; /* Light gray background */
+            padding: 20px; /* Increased padding */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        .info-box h2 {
+            margin-top: 0; /* Remove default margin */
+        }
+
+        .hasher {
+            background-color: #ccc; /* Light gray background */
+            padding: 20px; /* Increased padding */
+            border-radius: 10px; /* Rounded corners */
+            margin-bottom: 20px; /* Increased margin */
+            text-align: center; /* Center align contents */
+        }
+
+        .textbox {
+            background: #fff; /* White background for text area */
+            border: 1px solid #ddd; /* Gray border */
+            border-radius: 5px; /* Rounded corners */
+            color: #666; /* Gray text color */
+            outline: none;
+            height: 40px;
+            width: calc(100% - 300px); /* Adjusted width */
+           /* Increased margin */
+            resize: none; /* Disable resizing */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            background-color: #4caf50; /* Green button background */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #313131; /* Lighter green shade on hover */
+        }
+
+        select {
+            background-color: #ddd; /* Light gray background for select dropdown */
+            color: #333; /* Dark gray text color */
+            padding: 8px; /* Increased padding */
+            border: none;
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        option {
+            background-color: #ddd; /* Light gray background for options */
+            color: #333; /* Dark gray text color */
+        }
+    </style>
     <title>Security Methods</title>
 </head>
 <body>
     <div class="jumbotron">
         <h1 class="display-4">Security algorithms</h1>
-        <hr class = "my-4">
+        <hr class="my-4">
         <p class="lead">
-            The security of a computer system is a crucial task. It is a process of ensuring the confidentiality and integrity of the OS. 
+            The security of a computer system is a crucial task. It is a process of ensuring the integrity of the OS.
             <br>  A system is said to be secure if its resources are used and accessed as intended under all the circumstances, but no system can guarantee absolute security from several of various malicious threats and unauthorized access.
-            <br>
-        <p class = "my-4">
-            
-                The security of a system can be threatened via two violations: 
-                <br> - Threat: A program that has the potential to cause serious damage to the system.
-                <br> - Attack: An attempt to break security and make unauthorized use of an asset. 
-              
-         
-          <br>
-           
         </p>
-        To enhance secuirty hashing algorithms are used. We have the following hashing algorithms. <br>
-
-        
-        
+        <p class="my-4">
+            The security of a system can be threatened via two violations: 
+            <br> - Threat: A program that has the potential to cause serious damage to the system.
+            <br> - Attack: An attempt to break security and make unauthorized use of an asset. 
+        </p>
     </div>
-    <br><br>
+    <div class="info-container">
+        <div class="info-box">
+            <h2>SHA1</h2>
+            <p>SHA-1 (Secure Hash Algorithm 1) is a cryptographic hash function which takes an input and produces a 160-bit (20-byte) hash value known as a message digest - typically rendered as a hexadecimal number, 40 digits long. SHA-1 is widely used in security applications and protocols including TLS, SSL, PGP, SSH, S/MIME, and IPsec. It is also used in popular security protocols like SSH and SSL/TLS.</p>
+        </div>
+        <div class="info-box">
+            <h2>SHA256</h2>
+            <p>SHA-256 (Secure Hash Algorithm 256-bit) is a cryptographic hash function that produces a 256-bit (32-byte) hash value. It is one of the successor hash functions to SHA-1 and is one of the strongest hash functions available. SHA-256 is used in various security applications and protocols such as TLS, SSL, PGP, SSH, and Bitcoin mining.</p>
+        </div>
+        <div class="info-box">
+            <h2>Md4</h2>
+            <p>MD4 (Message Digest Algorithm 4) is a cryptographic hash function that produces a 128-bit (16-byte) hash value. It was developed by Ronald Rivest in 1990 and is designed to be fast and simple, but it is vulnerable to various types of attacks. MD4 is no longer considered secure and is not recommended for further use in cryptographic applications.</p>
+        </div>
+        <div class="info-box">
+            <h2>Md5</h2>
+            <p>MD5 (Message Digest Algorithm 5) is a widely used cryptographic hash function that produces a 128-bit (16-byte) hash value. It is commonly used to verify data integrity and in digital signatures. However, MD5 is not collision-resistant and is vulnerable to collision attacks, so it is no longer recommended for cryptographic use, but still widely used in non-cryptographic applications.</p>
+        </div>
+    </div>
+    <br>
+    
     <div class="hasher">
-        <div>
-            <label id="dropdown-label" for="hashes">Choose the type of hash to perform: </label>
-            <select class="round" name="hashes" id="hashes">
-              <option value="1">SHA1</option>
-              <option value="2">SHA256</option>
-              <option value="3">Md4</option>
-              <option value="4">Md5</option>
-              
-              
-            </select>
-          </div>
-          <br><br>
-    
-    
-          <div id="block3" >
-            <textarea name="text" class="textbox" id="input_text" wrap="soft" placeholder="Insert text you want to hash"></textarea>
-            <button id="encrypt" onclick="hash()">Hash it!</button>  
-            <textarea name="text" class="textbox" id="hash" wrap="soft" placeholder="Output hash for given text"></textarea>
-          </div>
-    
+        <label for="hashes">Choose the type of hash to perform:</label>
+        <select name="hashes" id="hashes">
+            <option value="1">SHA1</option>
+            <option value="2">SHA256</option>
+            <option value="3">Md4</option>
+            <option value="4">Md5</option>
+        </select>
+        <br><br>
+        <textarea class="textbox" id="input_text" placeholder="Insert text you want to hash"></textarea>
+        <br>
+        <button onclick="hash()">Hash it!</button>
+        <br>
+        <textarea class="textbox" id="hash" placeholder="Output hash for given text" readonly></textarea>
     </div>
+    <script src="sha1.js"></script>
+    <script src="sha256.js"></script>
+    <script src="md4.js"></script>
+    <script src="md5.js"></script>
+    <script type="text/javascript">
+        function hash() {
+            var dd = document.getElementById("hashes").value;
+            var temp = document.getElementById("input_text").value;
+            if (dd == "1") {
+                var ans = SHA1(temp);
+                document.getElementById("hash").value = ans;
+            }
+            else if(dd == "2") {
+                var ans = sha256(temp);
+                document.getElementById("hash").value = ans;
+            }
+            else if (dd == "3") {
+                var ans = hex_md4(temp);
+                document.getElementById("hash").value = ans;
+            }
+            else if (dd == "4") {
+                var ans = md5(temp);
+                document.getElementById("hash").value = ans;
+            }
+        }
+    </script>
 </body>
-
-<script src="sha1.js"></script>
-<script src="sha256.js"></script>
-<script src="md4.js"></script>
-<script src="md5.js"></script>
-<script type="text/javascript">
-    
-
-    function hash() {
-      var dd = document.getElementById("hashes").value;
-      var temp = document.getElementById("input_text").value;
-      if (dd == "1") {
-        var ans = SHA1(temp);
-        document.getElementById("hash").innerHTML = ans;
-      }
-      else if(dd == "2") {
-        var ans = sha256(temp); //here error
-        console.log("In SHA 256")
-        document.getElementById("hash").innerHTML = ans;
-      }
-      else if (dd == "3") {
-        var ans = hex_md4(temp);
-        document.getElementById("hash").innerHTML = ans;
-      }
-      else if (dd == "4") {
-        var ans = md5(temp);
-        document.getElementById("hash").innerHTML = ans;
-      }
-      
-     
-    }
-
-  </script>
 </html>
-
-    

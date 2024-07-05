@@ -363,6 +363,7 @@
 //   animate();
 // }
 // 
+
 recalculateServiceTime();
 $('.priority-only').hide();
 
@@ -493,6 +494,9 @@ function recalculateServiceTime() {
       if (key == 0) return true;
       $(value.children[3]).text("");
     });
+  }
+  else{
+
   }
 }
 

@@ -16,13 +16,12 @@
             right: 0;
             bottom: 0;
             z-index: -1;
-            background-color: rgb(34, 29, 40);
-            /* linear-gradient(to bottom, rgba(57, 23, 194, 1), rgba(146, 25, 156, 1)); */
+            background-color: #333333;
         }
 
         .horizontal-list {
             display: flex;
-            color: white;
+            color: #eeeeee;
             justify-content: space-evenly;
         }
 
@@ -37,8 +36,8 @@
             height: fit-content;
             width: 300px;
             text-align: center;
-            background-color: #8283a1;
-            color: white;
+            background-color: #828282;
+            color: #eeeeee;
             margin-bottom: 10px;
             transition: .5s;
             z-index: -1;
@@ -70,33 +69,33 @@
 
         .container select:hover {
             transform: translateY(-3px);
-            background-color: rgb(157, 151, 194)
+            background-color: #595959;
         }
 
         table {
             margin: auto;
             min-width: 70vw;
             text-align: center;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #dddddd;
             border-collapse: collapse;
         }
 
         th,
         td {
-            border: 1px solid rgb(104, 104, 104);
+            border: 1px solid #686868;
             text-align: center;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #dddddd;
             border-collapse: collapse;
         }
 
         th {
-            background-color: #7b9bce;
-            color: white;
+            background-color: #7b7b7b;
+            color: #eeeeee;
         }
 
         tr:hover {
-            background-color: rgb(195, 226, 255);
-            color: black;
+            background-color: #a9a9a9;
+            color: #000000;
         }
 
         th,
@@ -115,22 +114,22 @@
             margin-left: 1%;
             margin-right: 1%;
             margin-top: 5%;
-            background-color: rgb(54, 49, 60);
+            background-color: #363636;
             padding-bottom: 10px;
             padding-top: 20px;
         }
 
         .display-4 {
-            color: white;
+            color: #eeeeee;
             text-align: center;
         }
 
         .my-4 {
-            border-color: white;
+            border-color: #eeeeee;
         }
 
         .lead {
-            color: white;
+            color: #eeeeee;
         }
     </style>
 </head>
@@ -149,6 +148,9 @@
             <li>Sequential Algorithm</li>
             <li>Linked Algorithm</li>
             <li>Indexed Algorithm</li>
+            <li>FAT (File Allocation Table)</li>
+            <li>Multi-Level Indexing</li>
+            <li>Clustered Allocation</li>
         </ul>
         </p>
     </div>
@@ -157,9 +159,12 @@
             <option value="sequential">Sequential</option>
             <option value="linked">Linked</option>
             <option value="indexed">Indexed</option>
+            <option value="fat">FAT</option>
+            <option value="multi-level">Multi-Level Indexing</option>
+            <option value="clustered">Clustered</option>
         </select>
         <button onclick="allocateFile()">Allocate File</button>
-        <table id="fileTable" style="color: white;">
+        <table id="fileTable" style="color: #eeeeee;">
             <tr>
                 <th class="active">File</th>
                 <th>Allocation Method</th>
@@ -172,6 +177,7 @@
         let fileCounter = 1;
         const totalBlocks = 100;
         let availableBlocks = Array.from({ length: totalBlocks }, (_, i) => i + 1);
+        let allocatedBlocks = new Set();
 
         function allocateFile() {
             const allocationMethod = document.getElementById("allocationMethod").value;
@@ -193,6 +199,15 @@
                     } else {
                         blocks = null;
                     }
+                    break;
+                case "fat":
+                    blocks = allocateFATBlocks(fileSize);
+                    break;
+                case "multi-level":
+                    blocks = allocateMultiLevelBlocks(fileSize);
+                    break;
+                case "clustered":
+                    blocks = allocateClusteredBlocks(fileSize);
                     break;
             }
 
@@ -237,6 +252,63 @@
             return dataBlocks;
         }
 
+        function allocateFATBlocks(fileSize) {
+            const blocks = [];
+            let currentBlock = findNextFreeBlock(1);
+            if (currentBlock === -1) return null; // No free blocks available
+            for (let i = 0; i < fileSize; i++) {
+                blocks.push(currentBlock);
+                currentBlock = findNextFreeBlock(currentBlock + 1);
+                if (currentBlock === -1) break; // Not enough contiguous free blocks
+            }
+            if (blocks.length < fileSize) return null; // File cannot be fully allocated
+            return blocks;
+        }
+
+        function findNextFreeBlock(startingBlock) {
+            for (let i = startingBlock; i <= totalBlocks; i++) {
+                if (!allocatedBlocks.has(i)) {
+                    allocatedBlocks.add(i);
+                    return i;
+                }
+            }
+            return -1; // No free blocks available
+        }
+
+        function allocateMultiLevelBlocks(fileSize) {
+            const topLevelBlocks = Math.ceil(fileSize / 10);
+            const blocks = [];
+            let currentBlock = findNextFreeBlock(1);
+            if (currentBlock === -1) return null; // No free blocks available
+            for (let i = 0; i < topLevelBlocks; i++) {
+                const subBlocks = [];
+                for (let j = 0; j < 10; j++) {
+                    subBlocks.push(currentBlock);
+                    currentBlock = findNextFreeBlock(currentBlock + 1);
+                    if (currentBlock === -1) break; // Not enough contiguous free blocks
+                }
+                blocks.push(subBlocks);
+                if (currentBlock === -1) break; // Not enough contiguous free blocks
+            }
+            if (blocks.flat().length < fileSize) return null; // File cannot be fully allocated
+            return blocks;
+        }
+
+        function allocateClusteredBlocks(fileSize) {
+            const clustersRequired = Math.ceil(fileSize / 5);
+            const blocks = [];
+            for (let i = 0; i < clustersRequired; i++) {
+                const cluster = [];
+                for (let j = 0; j < 5; j++) {
+                    const block = findNextFreeBlock(1);
+                    if (block === -1) return null; // No free blocks available
+                    cluster.push(block);
+                }
+                blocks.push(cluster);
+            }
+            return blocks;
+        }
+
         function displayFileAllocation(fileNumber, allocationMethod, blocks) {
             const table = document.getElementById("fileTable");
             const row = table.insertRow(-1);
@@ -245,6 +317,18 @@
 
             if (allocationMethod === "indexed") {
                 row.insertCell(2).innerHTML = `Index: ${blocks.indexBlock}, Data: ${blocks.dataBlocks.join(", ")}`;
+            } else if (allocationMethod === "multi-level") {
+                let blockString = "";
+                blocks.forEach(subBlocks => {
+                    blockString += "[" + subBlocks.join(", ") + "] ";
+                });
+                row.insertCell(2).innerHTML = blockString;
+            } else if (allocationMethod === "clustered") {
+                let blockString = "";
+                blocks.forEach(cluster => {
+                    blockString += "{" + cluster.join(", ") + "} ";
+                });
+                row.insertCell(2).innerHTML = blockString;
             } else {
                 row.insertCell(2).innerHTML = Array.isArray(blocks) ? blocks.join(", ") : `${blocks.start} - ${blocks.end}`;
             }

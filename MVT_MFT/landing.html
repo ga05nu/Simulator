@@ -6,12 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>MFT_MVT</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Light gray background */
+            font-family: Arial, sans-serif; /* Font for better compatibility */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .button-container {
+
+        }
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ccc; /* Gray shade for button background */
+            color: #fff; /* White text color */
+            font-size: 68px; /* Increased font size */
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #999; /* Darker gray shade on hover */
+        }
+        .button:focus {
+            outline: none; /* Remove focus outline */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <button class="button button-1" onclick="window.location.href = 'MVT/mvt.html';">MVT</button>
-        <button class="button button-2" onclick="window.location.href = 'MFT/mft.html';">MFT</button>
+        <div class="button-container">
+            <button class="button button-1" onclick="window.location.href = 'MVT/mvt.html';">MVT</button>
+        </div>
+        <div class="button-container">
+            <button class="button button-2" onclick="window.location.href = 'MFT/mft.html';">MFT</button>
+        </div>
     </div>    
- 
 </body>
 </html>

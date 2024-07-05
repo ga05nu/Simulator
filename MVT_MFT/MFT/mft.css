@@ -16,7 +16,7 @@ body:before {
   right: 0;
   bottom: 0;
   z-index: -1;
-  background-color: rgb(34, 29, 40);
+  background-color: #f0f0f0; /* Light gray background */
 }
 
 .block {
@@ -34,15 +34,13 @@ body:before {
 }
 
 .block.empty {
-  background-color: lightgray;
-  color: black;
+  background-color: #ccc; /* Light gray background */
+  color: #000; /* Black text color */
 }
 
 .block.process {
-  background-color: lightgreen;
-  color: black;
-  /* width: var(--allocated-percentage, 0%); */
-
+  background-color: #ddd; /* Light gray background */
+  color: #000; /* Black text color */
 }
 
 .block-content {
@@ -50,7 +48,7 @@ body:before {
   top: 0;
   left: 0;
   height: 100%;
-  background-color: lightgreen;
+  background-color: #ddd; /* Light gray background */
 }
 
 .block-label {
@@ -68,20 +66,21 @@ body:before {
   margin-left: 1%;
   margin-right: 1%;
   margin-top: 5%;
-  background-color: rgb(54, 49, 60);
+  background-color: #ccc; /* Light gray background */
   padding-bottom: 10px;
   padding-top: 20px;
 }
 
 .display-4 {
-  color: white;
+  color: #aeaeae; /* Dark gray text color */
   text-align: center;
+  font-family: 'Poppins', sans-serif; /* Poppins font */
 }
 
 .my-4 {
-  border-color: white;
+  border-color: #333; /* Dark gray border color */
 }
 
 .lead {
-  color: white;
+  color: #c8c6c6; /* Dark gray text color */
 }
